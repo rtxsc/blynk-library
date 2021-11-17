@@ -47,7 +47,7 @@ below the pre-requisite Blynk header files.
 Trust me, I have wasted a day or two just trying to figure this out.
 Hopefully this guide will help you save some time tinkering around the bushes.
 
-### How to run this on your Raspberry Pi
+### How to run this on your Raspberry Pi or any Linux machine
 
 0. Connect your Raspberry Pi to the internet and open it's console. ^_^
 
@@ -58,10 +58,20 @@ Hopefully this guide will help you save some time tinkering around the bushes.
     ```bash
     $ git clone https://github.com/blynkkk/blynk-library.git
     $ cd blynk-library/linux
+    ```
+3. Edit Makefile for the source file you want to compile. By default, main.cpp is selected.
+
+    ```
+    $ sudo nano Makefile
+    
+    ```
+    
+4. Build the executable file (default build name is ```blynk```).
+    ```
     $ make clean all target=raspberry
     ```
 
-3. Run Blynk:
+5. Run Blynk:
     ```bash
     $ sudo ./blynk --token=YourAuthToken
     
