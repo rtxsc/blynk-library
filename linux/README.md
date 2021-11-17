@@ -8,12 +8,16 @@ Tested on Raspberry Pi 3B PLUS
 #define BLYNK_TEMPLATE_ID "SomeTemplateID"
 #define BLYNK_DEVICE_NAME "Quickstart Device"
 ```
-### THESE TWO LINES MUST BE AT THE VERY TOP OF YOUR CODE (LINE 0!)
+### THESE TWO LINES MUST BE AT THE VERY TOP OF YOUR CODE ```(LINE 0!)```
 ### ABOVE ANYTHING ELSE ! ALL HEADER FILES MUST COME AFTER THESE TWO LINES
 
-This is related to old vs new Blynk server!
+This is related to old vs new Blynk server transition!
+For starters, Blynk has 2 servers currently running.
 
-If you put the 
+```blynk-cloud.com``` 	: old server for Blynk 0.1 (legacy)
+```blynk.cloud```	: new server for Blynk
+
+If you somehow didn't really read or understand the situation and put the 
 ```
 #define BLYNK_TEMPLATE_ID "SomeTemplateID"
 ```
@@ -92,3 +96,5 @@ We have also provided a build script, you can try just running (inside of the "l
 ```bash
 $ ./build.sh raspberry
 ```
+
+# Example
