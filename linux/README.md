@@ -22,19 +22,32 @@ the library will automatically set the default
 server to 
 ```"blynk-cloud.com"```
 which is the older server for Blynk 0.1(legacy) (no longer supported)
-and this won't work with the newer AUTH token from blynk.cloud!
+plus this won't work with the newer AUTH token provided from blynk.cloud!
 
 Placing 
 ```
 #define BLYNK_TEMPLATE_ID "SomeTemplateID"
 ```
-at the very top will allow the #ifdef method
-inside BlynkConfig.h to select the newer Blynk server that is 
+at the very top will allow the ```#ifdef``` method
+inside ```BlynkConfig.h``` to select the newer Blynk server that is 
 ```"blynk.cloud"```
 
+Here are the lines from BlynkConfig.h for your reference.
+This is the sole reason why you CANNOT define ```BLYNK_TEMPLATE_ID```
+below the pre-requisite Blynk header files.
+
+```
+#ifdef BLYNK_TEMPLATE_ID
+#define BLYNK_DEFAULT_DOMAIN     "blynk.cloud"
+#else
+#define BLYNK_DEFAULT_DOMAIN     "blynk-cloud.com"
+#endif
+```
+
 Trust me, I have wasted a day or two just trying to figure this out.
+Hopefully this guide will help you save some time tinkering around the bushes.
 
-
+### How to run this on your Raspberry Pi
 
 0. Connect your Raspberry Pi to the internet and open it's console. ^_^
 
@@ -53,7 +66,8 @@ Trust me, I have wasted a day or two just trying to figure this out.
     $ sudo ./blynk --token=YourAuthToken
     
     OR
-    // if running cloud.cpp (no parsing required because everything is hard coded)
+    
+    // executing cloud.cpp from Makefile (no parsing required because everything is hard coded)
     
     $ sudo ./blynk 
     
