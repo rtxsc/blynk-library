@@ -1,9 +1,9 @@
-# Linux Quick Start Guide (Ubuntu, Raspberry Pi, ...)
+# Linux Quick Start Guide (Ubuntu, Raspberry Pi)
 Tested on Raspberry Pi 3B PLUS 
 
-### YOU MIGHT NOT NOTICE THIS CLEARLY IN THE OFFICIAL GUIDE! 
+### YOU MIGHT NOT AWARE OF THIS CLEARLY IN THE OFFICIAL GUIDE! 
 
-HERE LET ME RE-EMPHASIZE FOR ALL BLYNK NEWCOMER
+! HERE LET ME RE-EMPHASIZE FOR ALL BLYNK NEWCOMER !
 ``` 
 #define BLYNK_TEMPLATE_ID "SomeTemplateID"
 #define BLYNK_DEVICE_NAME "Quickstart Device"
@@ -43,9 +43,8 @@ Trust me, I have wasted a day or two just trying to figure this out.
     
     OR
     // if running cloud.cpp (no parsing required because everything is hard coded)
-    bash
-    $ sudo ./blynk 
     
+    $ sudo ./blynk 
     
     ```
 
