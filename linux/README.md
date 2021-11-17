@@ -98,3 +98,126 @@ $ ./build.sh raspberry
 ```
 
 # Example
+
+### Code Sample 1 : Running the app with command line parsing method for Auth Token (default)
+
+```
+#define BLYNK_TEMPLATE_ID   "Your Template ID"
+#define BLYNK_DEVICE_NAME   "Your Device Name"
+
+//#define BLYNK_DEBUG
+#define BLYNK_PRINT stdout
+#ifdef RASPBERRY
+  #include <BlynkApiWiringPi.h>
+#else
+  #include <BlynkApiLinux.h>
+#endif
+#include <BlynkSocket.h>
+#include <BlynkOptionsParser.h>
+
+static BlynkTransportSocket _blynkTransport;
+BlynkSocket Blynk(_blynkTransport);
+
+static const char *auth, *serv;
+static uint16_t port;
+
+#include <BlynkWidgets.h>
+
+BlynkTimer tmr;
+
+BLYNK_WRITE(V1)
+{
+    printf("Got a value: %s\n", param[0].asStr());
+}
+
+void setup()
+{
+    printf("Running blynk with parsed parameters\n");
+    Blynk.begin(auth, serv, port);
+    tmr.setInterval(1000, [](){
+      Blynk.virtualWrite(V2, BlynkMillis()/1000);
+    });
+}
+
+void loop()
+{
+    Blynk.run();
+    tmr.run();
+}
+
+
+int main(int argc, char* argv[])
+{
+    parse_options(argc, argv, auth, serv, port); // perform command line parsing for Auth Token (required)
+
+    setup();
+    while(true) {
+        loop();
+    }
+
+    return 0;
+}
+
+```
+
+### Code Sample 2 : Running the app without command line parsing method for Auth Token (hard coding everthing in the code)
+
+```
+#define BLYNK_TEMPLATE_ID   	"Your Template ID"
+#define BLYNK_DEVICE_NAME   	"Your Device Name"
+#define BLYNK_AUTH_TOKEN    	"Your Auth Token" // this will be coming from your blynk.cloud server NOT blynk-cloud.com
+#define SERVER		    	"blynk.cloud"
+#define PORT			80
+
+//#define BLYNK_DEBUG
+#define BLYNK_PRINT stdout
+#ifdef RASPBERRY
+  #include <BlynkApiWiringPi.h>
+#else
+  #include <BlynkApiLinux.h>
+#endif
+#include <BlynkSocket.h>
+#include <BlynkOptionsParser.h>
+
+static BlynkTransportSocket _blynkTransport;
+BlynkSocket Blynk(_blynkTransport);
+
+static const char *auth, *serv;
+static uint16_t port;
+
+#include <BlynkWidgets.h>
+
+BlynkTimer tmr;
+
+BLYNK_WRITE(V1)
+{
+    printf("Got a value: %s\n", param[0].asStr());
+}
+
+void setup()
+{
+    printf("Running blynk with hardcoded parameters\n");
+    Blynk.begin(BLYNK_AUTH_TOKEN, SERVER, PORT);
+    tmr.setInterval(1000, [](){
+      Blynk.virtualWrite(V2, BlynkMillis()/1000);
+    });
+}
+
+void loop()
+{
+    Blynk.run();
+    tmr.run();
+}
+
+
+int main(int argc, char* argv[])
+{
+    setup();
+    while(true) {
+        loop();
+    }
+
+    return 0;
+}
+
+```
