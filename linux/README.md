@@ -15,6 +15,7 @@ This is related to old vs new Blynk server transition!
 For starters, Blynk has 2 servers currently running.
 
 ```blynk-cloud.com``` 	: old server for Blynk 0.1 (legacy)
+
 ```blynk.cloud```	: new server for Blynk
 
 If you somehow didn't really read or understand the situation and put the 
@@ -25,8 +26,8 @@ somewhere below the required Blynk header files,
 the library will automatically set the default
 server to 
 ```"blynk-cloud.com"```
-which is the older server for Blynk 0.1(legacy) (no longer supported)
-plus this won't work with the newer AUTH token provided from blynk.cloud!
+that is the older server for Blynk 0.1(legacy) (no longer supported)
+plus this won't work with the newer AUTH token provided from ```blynk.cloud```!
 
 Placing 
 ```
