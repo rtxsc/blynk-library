@@ -64,6 +64,10 @@ Hopefully this guide will help you save some time tinkering around the bushes.
     ```
     $ sudo nano Makefile
     
+    SOURCES=main.cpp \
+	../src/utility/BlynkDebug.cpp \
+	../src/utility/BlynkHandlers.cpp \
+	../src/utility/BlynkTimer.cpp
     ```
     
 4. Build the executable file (default build name is ```blynk```).
