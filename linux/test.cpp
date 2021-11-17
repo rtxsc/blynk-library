@@ -17,10 +17,6 @@
 #include <BlynkSocket.h>
 #include <BlynkOptionsParser.h>
 
-#define BLYNK_TEMPLATE_ID   "TMPLeeiaBpif"
-#define BLYNK_DEVICE_NAME   "Cream Pie"
-
-
 static BlynkTransportSocket _blynkTransport;
 BlynkSocket Blynk(_blynkTransport);
 
@@ -33,7 +29,7 @@ BlynkTimer tmr;
 
 BLYNK_WRITE(V1)
 {
-    printf("original main-Got a value: %s\n", param[0].asStr());
+    printf("test creampie yummy2 - Got a value: %s\n", param[0].asStr());
 }
 
 void setup()
