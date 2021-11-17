@@ -6,7 +6,14 @@ Tested on Raspberry Pi 3
 #define BLYNK_DEVICE_NAME "Quickstart Device"
 ```
 ### THESE TWO LINES MUST BE AT THE VERY TOP OF YOUR CODE (LINE 0)
-### ABOVE ANYTHING ELSE / ALL INCLUDED HEADER FILES MUST FOLLOW THESE TWO LINES
+### ABOVE ANYTHING ELSE ! HEADER FILES MUST FOLLOW THESE TWO LINES
+```
+This is related to old vs new Blynk server
+If you put the #define BLYNK_TEMPLATE_ID "SomeTemplateID"
+somewhere below the required Blynk header files,
+the library will automatically set the default
+server to "blynk-cloud.com" which is the older server for Blynk 0.1(legacy) (no longer supported)
+```
 
 0. Connect your Raspberry Pi to the internet and open it's console. ^_^
 
